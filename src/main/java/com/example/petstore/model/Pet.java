@@ -1,7 +1,7 @@
 package com.example.petstore.model;
 
 import com.example.petstore.model.enumType.PetStatus;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -33,6 +33,7 @@ public class Pet extends AbstractEntity {
     @Column(unique = true, nullable = false)
     private String name;
     @ManyToMany
+    @JsonIgnore
     @JoinTable(
             name = "pet_tag",
             joinColumns = @JoinColumn(name = "pet_id"),
@@ -43,5 +44,6 @@ public class Pet extends AbstractEntity {
     @Transient
     private PetStatus status;
     @OneToMany(mappedBy = "pet")
+    @JsonIgnore
     private List<Order> orders;
 }
