@@ -17,6 +17,6 @@ import lombok.ToString;
 @Entity
 @Table(name = "tag")
 public class Tag extends AbstractEntity {
-    @Column(length = 100, nullable = false)
+    @Column(length = 100, nullable = false, unique = true)
     private String name;
 }
