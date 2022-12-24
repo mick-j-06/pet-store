@@ -10,6 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
@@ -41,4 +42,6 @@ public class Pet extends AbstractEntity {
     @Enumerated(EnumType.STRING)
     @Transient
     private PetStatus status;
+    @OneToMany(mappedBy = "pet")
+    private List<Order> orders;
 }
