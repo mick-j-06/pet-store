@@ -1,0 +1,2 @@
+insert into tag (id,creation_date,last_modified_date,name) values (1,'2021-11-08T08:25:24.00Z','2021-11-08T08:25:24.00Z','tag_1');
+insert into tag (id,creation_date,last_modified_date,name) values (2,'2021-11-08T08:25:24.00Z','2021-11-08T08:25:24.00Z','tag_2');
