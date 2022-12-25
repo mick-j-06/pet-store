@@ -10,3 +10,6 @@ create table "user"
     email              varchar
         constraint user_email_unique unique
 );
+
+alter table "user"
+    add column phone varchar(20);
