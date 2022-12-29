@@ -1,6 +1,7 @@
 package com.example.petstore.controller;
 
-import com.example.petstore.model.Order;
+import com.example.petstore.controller.dto.OrderDto;
+import com.example.petstore.controller.mapper.OrderMapper;
 import com.example.petstore.service.OrderService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,10 +15,11 @@ import java.util.List;
 @RequestMapping(value = "/order")
 public class OrderController {
     private OrderService orderService;
+    private OrderMapper orderMapper;
 
     @GetMapping
-    public List<Order> findAllOrder() {
-        return orderService.findAll();
+    public List<OrderDto> findAllOrder() {
+        return orderService.findAll().stream().map(orderMapper::toRest).toList();
     }
 
 }
