@@ -15,4 +15,8 @@ public class PetService {
     public List<Pet> findAll() {
         return petRepository.findAll();
     }
+
+    public Pet gitById(Integer id) {
+        return petRepository.getReferenceById(id);
+    }
 }
