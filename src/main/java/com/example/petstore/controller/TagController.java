@@ -1,6 +1,7 @@
 package com.example.petstore.controller;
 
-import com.example.petstore.model.Tag;
+import com.example.petstore.controller.dto.TagDto;
+import com.example.petstore.controller.mapper.TagMapper;
 import com.example.petstore.service.TagService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,9 +15,10 @@ import java.util.List;
 @RequestMapping(value = "/tags")
 public class TagController {
     private TagService tagService;
+    private TagMapper tagMapper;
 
     @GetMapping
-    public List<Tag> findTags() {
-        return tagService.findAll();
+    public List<TagDto> findTags() {
+        return tagService.findAll().stream().map(tagMapper::toRest).toList();
     }
 }
