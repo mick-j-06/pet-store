@@ -1,6 +1,7 @@
 package com.example.petstore.controller;
 
-import com.example.petstore.model.User;
+import com.example.petstore.controller.dto.UserDto;
+import com.example.petstore.controller.mapper.UserMapper;
 import com.example.petstore.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,9 +15,10 @@ import java.util.List;
 @RequestMapping(value = "/user")
 public class UserController {
     private UserService userService;
+    private UserMapper userMapper;
 
     @GetMapping
-    public List<User> findAll() {
-        return userService.findAll();
+    public List<UserDto> findAll() {
+        return userService.findAll().stream().map(userMapper::toRest).toList();
     }
 }
